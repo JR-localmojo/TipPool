@@ -333,3 +333,6 @@ process.on('SIGINT', () => {
     process.exit(0);
   });
 });
+app.get("/health", (req, res) => {
+  res.json({ ok: true, service: "tippool-backend" });
+});
