@@ -20,6 +20,9 @@ const db = new sqlite3.Database('./tippool.db', (err) => {
     initializeDatabase();
   }
 });
+app.get("/health", (req, res) => {
+  res.json({ ok: true, service: "tippool-backend" });
+});
 
 // Create tables
 function initializeDatabase() {
@@ -332,7 +335,4 @@ process.on('SIGINT', () => {
     }
     process.exit(0);
   });
-});
-app.get("/health", (req, res) => {
-  res.json({ ok: true, service: "tippool-backend" });
 });
